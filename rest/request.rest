@@ -1,0 +1,4 @@
+
+
+# HealthCheck req
+GET http://localhost:1337/main/healthcheck
