@@ -1,102 +1,108 @@
+# NodeJS-TypeScript
 
-npm --init
+A TypeScript-based Node.js project with Express, MongoDB, and decorators for structured API development.
 
-.vscode
- setting.json 
-    add setting vsCode
+## Features
+- TypeScript setup with ts-node and Jest for testing.
+- Express server with middleware for logging, error handling, and CORS.
+- Decorators for defining controllers and routes.
+- MongoDB integration using Mongoose.
+- Validation using Joi.
+- Fully configurable via environment variables.
 
- npm i -g  typescript ts-node nodemon
-    for install package globaly
+## Installation
 
-tsc --init
-    tsconfig.json file
+1. **Initialize the project**
+   ```sh
+   npm init -y
+   ```
 
-.prettierrc
-    add prettier config
+2. **Setup TypeScript and related tools**
+   ```sh
+   npm i -g typescript ts-node nodemon
+   tsc --init
+   ```
 
-update tsconfig.json for read and run .ts files
+3. **Configure Prettier**
+   - Add a `.prettierrc` file for code formatting.
 
-npm i express dotenv
+4. **Install dependencies**
+   ```sh
+   npm i express dotenv
+   npm i --save-dev @types/express @types/node
+   ```
 
-npm i --save-dev @types/express @types/node
+5. **Setup middleware**
+   - Create `corsHandler`, `loggingHandler`, and `routeNotFound` middlewares.
 
-create env file and set config server
+6. **Install testing tools**
+   ```sh
+   npm i --save-dev ts-jest supertest jest @types/supertest @types/jest
+   ```
+   - Configure `tsconfig.json` and `jest.config.ts` for testing.
 
-create src/config/config.ts file and add config server
+7. **Define decorators for controllers and routes**
+   ```sh
+   npm i reflect-metadata
+   ```
+   - Enable `"experimentalDecorators": true` in `tsconfig.json`.
+   - Import `reflect-metadata` in `server.ts`.
 
-create src/config/logging.ts file and add custom consol logs
+8. **Setup validation**
+   ```sh
+   npm i joi
+   ```
+   - Create validation decorators in `src/decorators/validate.ts`.
 
-create src/server.ts file and add server api codes and config server
+9. **Setup MongoDB with Mongoose**
+   ```sh
+   npm i mongoose
+   ```
+   - Update `.env` and `src/config/config.ts` with MongoDB configuration.
 
-create middleware files and config there
-    corsHandler , loggingHandler , routeNotFound
+## Project Structure
 
-npm i --save-dev typescript ts-node ts-jest supertest jest @types/supertest @types/jest
+```
+project-root/
+├── src/
+│   ├── config/
+│   ├── controllers/
+│   ├── decorators/
+│   ├── middleware/
+│   ├── models/
+│   ├── modules/
+│   ├── library/
+│   ├── server.ts
+│   ├── tests/
+├── .vscode/
+├── .prettierrc
+├── tsconfig.json
+├── tsconfig.build.json
+├── jest.config.ts
+├── package.json
+├── .env
+```
 
-config tsconfig.json for run test
-    update include and types value 
+## Scripts
 
-create tsconfig.build.json and add config
+- **Start server**: `npm start`
+- **Run tests**: `npm test`
+- **Build project**: `npm run build`
 
-create jest.config.ts and add config that
+## Description of Used Packages
 
-update script in package.json
-    add new script for run test
-    add new script for build
+- **TypeScript**: Used for static typing and better development experience.
+- **ts-node**: Enables running TypeScript files without manual compilation.
+- **nodemon**: Restarts the server on file changes.
+- **Express**: Web framework for building APIs.
+- **dotenv**: Loads environment variables from a `.env` file.
+- **Jest & Supertest**: Testing framework for unit and integration tests.
+- **reflect-metadata**: Enables decorators for controllers and routes.
+- **Joi**: Schema validation for request payloads.
+- **Mongoose**: ODM for MongoDB.
 
+## Contributing
+Feel free to fork the repository and submit pull requests!
 
-create test file by name:  application.test.ts 
-    write simple test 
-
-
-create errorHandler.ts middleware 
-    use in server
-
--- define decorator for routes:
-npm i reflect-metadata
-
-update tsconfig.json
-    add new key : "reflect-metadata"
-        "types": ["jest", "reflect-metadata"],
-    set true value :
-        "experimentalDecorators": true
-
-import reflect-metadata library in server.ts file
-    import 'reflect-metadata'
-
-define src/library/routes.ts file for routes type
-    define types and export that
-
-define simple controller  file :
-    add new route method in controller
-
-define decorator for Controller's class in : src/decorators/controller.ts
-
-define decorator for routes of Controller's class in : src/decorators/route.ts
-
-define module for load Routes from controller's in src/modules/routes.ts
-
-load Controller's by decorator in server:
-     defineRoutes([MainController], application);
-
-npm i joi
-
-create validation decorator in : src/decorators/validate.ts
-
-create new controller by name UserController for use Validation decorator
-
-npm i mongoose
-
-update .env file for mongo config
-
-update config file for mongo DB config in : src/config/config.ts
-
-create a basic models by name Book in : src/models/book.ts
-
-create a partial global types on Request type for decorator methods of mongo in : src/middleware/declareHandler.ts
-
-add declareHandler middleware method in server
-
-create a Controller class for book in : src/controllers/book.ts
-
-create Decorator methods for work with mongo DB in: src/decorators/mongoose/*
+## License
+This project is licensed under the MIT License.
