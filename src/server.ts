@@ -1,12 +1,15 @@
 import http from 'http';
 import express from 'express';
 import './config/logging';
+import 'reflect-metadata'
 
 import { server } from './config/config';
 import { corsHandler } from './middleware/corsHandler';
 import { loggingHandler } from './middleware/loggingHandler';
 import { routeNotFound } from './middleware/routeNotFound';
 import { errorHandler } from './middleware/errorHandler';
+import MainController from './controllers/main';
+import { defineRoutes } from './modules/routes';
 
 export const application = express();
 export let httpServer: ReturnType<typeof http.createServer>;
@@ -32,10 +35,11 @@ export const Main = () => {
     logging.log('----------------------------------------');
     logging.log('Define Controller Routing');
     logging.log('----------------------------------------');
-    application.get('/main', (req, res, next) => {
-        res.status(200).json({ hello: 'world!' })
+    defineRoutes([MainController], application);
 
-    });
+    // application.get('/main', (req, res, next) => {
+    //     res.status(200).json({ hello: 'world!' })
+    // });
 
     logging.log('----------------------------------------');
     logging.log('Define Routing Error');

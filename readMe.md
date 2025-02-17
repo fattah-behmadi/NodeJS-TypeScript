@@ -51,3 +51,31 @@ create test file by name:  application.test.ts
 
 create errorHandler.ts middleware 
     use in server
+
+-- define decorator for routes:
+npm i reflect-metadata
+
+update tsconfig.json
+    add new key : "reflect-metadata"
+        "types": ["jest", "reflect-metadata"],
+    set true value :
+        "experimentalDecorators": true
+
+import reflect-metadata library in server.ts file
+    import 'reflect-metadata'
+
+define src/library/routes.ts file for routes type
+    define types and export that
+
+define simple controller  file :
+    add new route method in controller
+
+define decorator for Controller's class in : src/decorators/controller.ts
+
+define decorator for routes of Controller's class in : src/decorators/route.ts
+
+define module for load Routes from controller's in src/modules/routes.ts
+
+load Controller's by decorator in server:
+     defineRoutes([MainController], application);
+
