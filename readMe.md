@@ -90,3 +90,13 @@ npm i mongoose
 update .env file for mongo config
 
 update config file for mongo DB config in : src/config/config.ts
+
+create a basic models by name Book in : src/models/book.ts
+
+create a partial global types on Request type for decorator methods of mongo in : src/middleware/declareHandler.ts
+
+add declareHandler middleware method in server
+
+create a Controller class for book in : src/controllers/book.ts
+
+create Decorator methods for work with mongo DB in: src/decorators/mongoose/*

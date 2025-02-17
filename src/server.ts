@@ -12,6 +12,8 @@ import { errorHandler } from './middleware/errorHandler';
 import MainController from './controllers/main';
 import { defineRoutes } from './modules/routes';
 import { UserController } from './controllers/user';
+import { declareHandler } from './middleware/declareHandler';
+import BookController from './controllers/book';
 
 export const application = express();
 export let httpServer: ReturnType<typeof http.createServer>;
@@ -46,13 +48,14 @@ export const Main = async () => {
     logging.log('----------------------------------------');
     logging.log('Logging & Configuration');
     logging.log('----------------------------------------');
+    application.use(declareHandler);
     application.use(corsHandler);
     application.use(loggingHandler);
 
     logging.log('----------------------------------------');
     logging.log('Define Controller Routing');
     logging.log('----------------------------------------');
-    defineRoutes([MainController, UserController], application);
+    defineRoutes([MainController, UserController, BookController], application);
 
     // application.get('/main', (req, res, next) => {
     //     res.status(200).json({ hello: 'world!' })
