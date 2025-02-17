@@ -1,19 +1,28 @@
 {
-  "name": "nodejs-typescript",
-  "version": "1.0.0",
-  "description": "simple api in NodeJS with TypeScript",
-  "main": "src/server.ts",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
-  "license": "MIT",
-  "dependencies": {
-    "dotenv": "^16.4.7",
-    "express": "^4.21.2"
-  },
-  "devDependencies": {
-    "@types/express": "^5.0.0",
-    "@types/node": "^22.13.4"
-  }
+    "name": "nodejs-typescript",
+    "version": "1.0.0",
+    "description": "simple api in NodeJS with TypeScript",
+    "main": "src/server.ts",
+    "scripts": {
+        "build": "rm -rf build/ && tsc",
+        "build-exclude-test": "rm -rf build/ && tsc -p tsconfig.build.json",
+        "test": "jest --config jest.config.ts --detectOpenHandles --coverage --maxWorkers=1"
+    },
+    "author": "",
+    "license": "MIT",
+    "dependencies": {
+        "dotenv": "^16.4.7",
+        "express": "^4.21.2"
+    },
+    "devDependencies": {
+        "@types/express": "^5.0.0",
+        "@types/jest": "^29.5.14",
+        "@types/node": "^22.13.4",
+        "@types/supertest": "^6.0.2",
+        "jest": "^29.7.0",
+        "supertest": "^7.0.0",
+        "ts-jest": "^29.2.5",
+        "ts-node": "^10.9.2",
+        "typescript": "^5.7.3"
+    }
 }
