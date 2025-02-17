@@ -10,6 +10,7 @@ import { routeNotFound } from './middleware/routeNotFound';
 import { errorHandler } from './middleware/errorHandler';
 import MainController from './controllers/main';
 import { defineRoutes } from './modules/routes';
+import { UserController } from './controllers/user';
 
 export const application = express();
 export let httpServer: ReturnType<typeof http.createServer>;
@@ -35,7 +36,7 @@ export const Main = () => {
     logging.log('----------------------------------------');
     logging.log('Define Controller Routing');
     logging.log('----------------------------------------');
-    defineRoutes([MainController], application);
+    defineRoutes([MainController,UserController], application);
 
     // application.get('/main', (req, res, next) => {
     //     res.status(200).json({ hello: 'world!' })

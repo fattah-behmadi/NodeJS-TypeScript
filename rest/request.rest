@@ -1,4 +1,13 @@
 
 
-# HealthCheck req
+#### HealthCheck req
 GET http://localhost:1337/main/healthcheck
+
+#### user
+POST http://localhost:1337/user
+Content-Type: application/json
+
+{
+    "name":"Fattah",
+    "email":"wrongEmail"
+}

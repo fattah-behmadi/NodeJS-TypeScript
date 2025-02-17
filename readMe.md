@@ -79,3 +79,8 @@ define module for load Routes from controller's in src/modules/routes.ts
 load Controller's by decorator in server:
      defineRoutes([MainController], application);
 
+npm i joi
+
+create validation decorator in : src/decorators/validate.ts
+
+create new controller by name UserController for use Validation decorator
