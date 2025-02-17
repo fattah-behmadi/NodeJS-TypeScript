@@ -48,3 +48,6 @@ update script in package.json
 create test file by name:  application.test.ts 
     write simple test 
 
+
+create errorHandler.ts middleware 
+    use in server

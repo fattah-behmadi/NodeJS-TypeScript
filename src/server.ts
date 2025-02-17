@@ -6,6 +6,7 @@ import { server } from './config/config';
 import { corsHandler } from './middleware/corsHandler';
 import { loggingHandler } from './middleware/loggingHandler';
 import { routeNotFound } from './middleware/routeNotFound';
+import { errorHandler } from './middleware/errorHandler';
 
 export const application = express();
 export let httpServer: ReturnType<typeof http.createServer>;
@@ -17,13 +18,10 @@ export const Main = () => {
     application.use(express.urlencoded({ extended: true }));
     application.use(express.json());
 
-    // Error handling for invalid JSON
-    application.use((err: any, req: any, res: any, next: any) => {
-        if (err instanceof SyntaxError && 'body' in err) {
-            return res.status(400).json({ error: 'Invalid JSON' }); // Respond with a 400 error for invalid JSON
-        }
-        next();
-    });
+    logging.log('----------------------------------------');
+    logging.log('Error Handling');
+    logging.log('----------------------------------------');
+    application.use(errorHandler);
 
     logging.log('----------------------------------------');
     logging.log('Logging & Configuration');
