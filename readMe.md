@@ -84,3 +84,9 @@ npm i joi
 create validation decorator in : src/decorators/validate.ts
 
 create new controller by name UserController for use Validation decorator
+
+npm i mongoose
+
+update .env file for mongo config
+
+update config file for mongo DB config in : src/config/config.ts
